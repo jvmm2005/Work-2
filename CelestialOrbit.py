@@ -1,3 +1,10 @@
+"""
+El programa solicita la entrada de parámetros para los cuerpos celestes, simulando sus órbitas en numpy.
+Se debe proporcionar la masa, posición inicial (coordenadas x e y) y velocidad inicial (componentes x e y) de cada cuerpo.
+Los parámetros de simulación (G, num_steps, dt) se pueden modificar para ajustar la precisión y duración de la simulación.
+El código maneja errores básicos, pero pueden ocurrir problemas dependiendo de las entradas o circunstancias específicas.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -60,7 +67,7 @@ def plot_orbits(positions):
     plt.axis('equal')
     plt.show()
 
-# Error handling for input celestial bodies' parameters
+
 while True:
     try:
         num_bodies = int(input("Enter the number of celestial bodies: "))
@@ -70,17 +77,27 @@ while True:
         
         bodies = []
         for i in range(num_bodies):
-            mass = float(input(f"Enter mass of body {i+1}: "))
+            while True:
+                try:
+                    mass = float(input(f"Enter mass of body {i+1}: "))
+                    break
+                except ValueError:
+                    print("Invalid input for mass. Please enter a numeric value.")
+            
+            # Capture positions and velocities similarly
+            
             x_pos = float(input(f"Enter initial x position of body {i+1}: "))
             y_pos = float(input(f"Enter initial y position of body {i+1}: "))
             x_vel = float(input(f"Enter initial x velocity of body {i+1}: "))
             y_vel = float(input(f"Enter initial y velocity of body {i+1}: "))
+            
             bodies.append(CelestialBody(mass, [x_pos, y_pos], [x_vel, y_vel]))
+    
         
         # Set up simulation parameters
         G = 1.0
         num_steps = 1000
-        dt = 0.01
+        dt = 0.5
 
         # Simulate orbits
         positions = simulate_orbits(bodies, G, num_steps, dt)

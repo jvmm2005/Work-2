@@ -22,7 +22,7 @@ This program simulates the orbits of celestial bodies using the NumPy library in
 	Enter initial y position of body 3: 70
 	Enter initial x velocity of body 3: 0
 	Enter initial y velocity of body 3: 1
-
+[![Example](https://raw.githubusercontent.com/jvmm2005/Work-2/main/Figure_1.png "Example")](https://raw.githubusercontent.com/jvmm2005/Work-2/main/Figure_1.png "Example")
 ## Contributor
 	Miralles Mengual, José Víctor
 ## FAQ
